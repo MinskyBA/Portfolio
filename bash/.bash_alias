@@ -1,0 +1,15 @@
+alias ls='ls --color'
+alias ll='ls -lah --color'
+alias log1='ssh eq-prod-log1'
+alias stg1='ssh eqa-dp-stg1'
+alias nagios='ssh eqvm-nagios'
+alias xi='ssh eqnagiosxi'
+alias rc='vim ~/.bashrc'
+alias calg='gcalcli'
+alias gcal='gcalcli'
+alias ca="gcalcli quick --calendar 'Brian Minsky'"
+alias scrot="scrot -q 100 -s -e 'mv $f ~/screenshots'"
+
+
+# tail all logs in /var/log
+alias logs="sudo find /var/log -type f -ctime -1 -name "*.log*" -exec tail -f {} +;"

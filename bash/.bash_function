@@ -1,0 +1,51 @@
+dnsquery () {
+	ssh hrnprodmanage1 "sudo cat /var/named/chroot/var/named/master/hrn.k12.int" | grep --color $1;
+}
+
+mkcd () {
+	mkdir -p $1 && cd $1;
+}
+
+function hist {
+        /bin/grep -e '^\['$1 $HIST_USER_COMBINED
+}
+
+function com {          # outputs combined history, highlights PID if provided
+        if [ $# -eq 0 ]; then
+                cat $HIST_USER_COMBINED
+        else
+                grep -e '^\['$1'\].*' -e $ $HIST_USER_COMBINED --color
+        fi
+}
+
+fun () {
+	echo ""
+	echo ""
+	fortune -a
+	echo ""
+	echo ""
+}
+
+scratch () {
+	if [ $# -eq 0 ]; then
+		vim ~/scratch/$(date +"%F__%H-%M")
+	else
+		vim ~/scratch/$(date +"%F__%H-%M")__$1
+	fi
+}
+
+vscratch () {
+	select MATCH in `ls ~/scratch/ | grep -i $1`
+	do
+		case $MATCH in
+		* )
+			vim ~/scratch/$MATCH
+			break
+			;;
+		esac
+	done
+}
+
+cupholder () {
+	eject
+}
