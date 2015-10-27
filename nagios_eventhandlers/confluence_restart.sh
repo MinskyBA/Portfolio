@@ -20,8 +20,8 @@ echo $(date) >> $LOGFILE
 
 restart_instance(){
 	echo RESTARTING >> $LOGFILE
-	ssh apache@eqprodlog1 "/data/app/scripts/control/confluence-hung_restart.sh"
-	## apache@eqprodlog1 is configured to accept connection from nagios@eqnagiosxi
+	ssh apache@<MANAGEMENT_SERVER> "/data/app/scripts/control/confluence-hung_restart.sh"
+	## apache@<MANAGEMENT_SERVER> is configured to accept connection from nagios@eqnagiosxi
 }
 
 notify_slack(){
